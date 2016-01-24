@@ -14,7 +14,25 @@
     </context-param>
 
 
-
+    <listener>
+ 	<listener-class>administration.config.InitialisationDaoFactory</listener-class>
+ </listener>
+<servlet>
+	<servlet-name>testAdministrators</servlet-name>
+	<servlet-class>administration.testServlet.TestAdministrators</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>testAdministrators</servlet-name>
+	<url-pattern>/testAdministrators</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>testRequests</servlet-name>
+	<servlet-class>administration.testServlet.TestRequests</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>testRequests</servlet-name>
+<url-pattern>/testRequests</url-pattern>
+</servlet-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
