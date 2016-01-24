@@ -14,6 +14,7 @@ public class Request {
 		SIGNED_BY_COMPANY,
 		SIGNED_BY_ALL;
 	}
+	
 	private long ID;
 	private long companyID;
 	private long internshipID; //ID de l'offre chez l'entreprise (deux entreprises différentes 
@@ -50,5 +51,11 @@ public class Request {
 	public void setStatus(RequestStatus status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "Request [ID=" + ID + ", companyID=" + companyID + ", internshipID=" + internshipID + ", studentID="
+				+ studentID + ", status=" + status + "]";
+	}
+	
 	
 }

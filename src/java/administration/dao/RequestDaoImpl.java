@@ -19,8 +19,8 @@ public class RequestDaoImpl implements RequestDao{
 	
 	private String SQL_SELECT_ALL_REQUESTS="SELECT * FROM Requests";
 	private String SQL_SELECT_REQUEST_FROM_ID="SELECT * FROM Requests WHERE ID=?";
-	private String SQL_INSERT_REQUEST="INSERT INTO Requests (internshipID,companyID,studentID,status)"
-									+ "VALUES(?,?,?)";
+	private String SQL_INSERT_REQUEST="INSERT INTO Requests (internshipID,companyID,studentID,status) "
+									+ "VALUES(?,?,?,?)";
 	private String SQL_UPDATE_REQUEST_STATUS="UPDATE Requests SET status=? WHERE ID=?";
 	
 	public RequestDaoImpl(DAOFactory dao){
@@ -63,10 +63,11 @@ public class RequestDaoImpl implements RequestDao{
 		PreparedStatement preparedStatement=null;
 		try{
 			connection=this.daoFactory.getConnection();
-			preparedStatement=initializePreparedStatement(connection, SQL_UPDATE_REQUEST_STATUS, false,
-					request.getID(),
-					request.getStatus().toString());
+			preparedStatement=initializePreparedStatement(connection, SQL_UPDATE_REQUEST_STATUS, true,
+					request.getStatus().toString(),
+					request.getID());
 			int status=preparedStatement.executeUpdate();
+			System.out.println(preparedStatement.toString());
 			if(status==0){
 				throw new DAOException("Failed to update the request status");
 			}
