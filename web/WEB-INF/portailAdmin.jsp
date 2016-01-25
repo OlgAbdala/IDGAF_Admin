@@ -1,3 +1,8 @@
+<%-- 
+    Document   : portailAdmin
+    Created on : 10 janv. 2016, 10:59:35
+    Author     : ChaySi
+--%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,144 +14,72 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="adminViewPage">
-    <meta name="author" content="Chaymaa">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>AdminPage - Home</title>
+    <title>IDGAF Administration Application</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/landing-page.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="countrySelect/css/countrySelect.min.css">
-    <link rel="stylesheet" href="countrySelect/css/demo.css">
-    <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
 
-<body BACKGROUND="img/AdmBackground1.jpg" BGCOLOR="#000088" TEXT="#000088">
+<body>
 
-    <div id="wrapper">
+    <!-- Header -->
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="afficheStageAdmin.jsp">Accueil</a>
-            </div>
+    <div class="intro-header">
+        <div class="container">
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li>Hi Admin</li>
-               <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Admin Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="accueilEtud.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-        </nav>
+            <div class="row">
+                <div class="col-lg-12">
+                                <div class="intro-message">
+                                     <form method="post" action="<c:url value="/ConnexionAdminServlet"/>">
 
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Liste des étudiants sans convention de stage!</h1>
-                        <table class="table table-responsive table-stripped">
-                            <thead>
-                                <tr>
-                                    <th>IdEtudiant</th>
-                                    <th>IdOffre</th>
-                                    <th>InfoConvention</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                         <fieldset>
+                                                <legend>Fill required values</legend>
+                                                <p class="alert-danger">${error}</p>
+                                                <label for="userName">Username <span>*</span></label>
+                                                <input type="text" id="v" name="login" size="30" maxlength="30"/>
+                         
+                                                <br />
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="etudiant"  items="${l1}"  varStatus="status">
+                                                <label for="password">Password <span>*</span></label>
+                                                <input type="password" id="v" name="password" size="30" maxlength="30"/>
+                                               
+                                                <br />
+                                                <input align="right" type="submit" value="Login"  />
+                                                <input align="left" type="reset" value="Reset" />
 
-                                <tr>
-                                    <td> ${etudiant} </td>
-                                    <td> ${l2[status.index]} </td>
-                                    <td><a href="La convention de stage" </a> Cliquez ici pour télécharger la  "${l3[status.index]}" </td>
-                                    <td>${l4[status.index]}</td>
-                              <td valign="bottom">
-                                  <input name="signer" type="button"  style="width:12px; height:6px;" style="background-color: #0099ff">
-                                  <input name="proposer modif" type="button"  style="width:12px; height:6px;">
+                                          </fieldset>
 
-                              </td>
-                                </tr>
-                               </c:forEach>
 
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.col-lg-12 -->
+                                    </form>
+                                    <h2>WELCOME TO IDGAF Administration APPLICATION</h2>
+                                    <h3>Master intership's world...</h3>
+                                    <hr class="intro-divider">
+                                </div>
                 </div>
-
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
+
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container -->
 
     </div>
+    <!-- /.intro-header -->
 
-    <!-- jQuery -->
-    <script src="jquery/dist/jquery.min.js"></script>
+    <!-- Page Content -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="metisMenu/dist/metisMenu.min.js"></script>
-
-    <script src="countrySelect/js/countrySelect.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
-    <script>
-        $("#country_selector").countrySelect({
-            //defaultCountry: "jp",
-            //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-            preferredCountries: ['fr', 'gb', 'us']
-        });
-    </script>
-    <script src="jquery-ui/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
-        });
-    </script>
+</form>
+<h2>loginAdministrator(String login, String password)</h2>
+		<p>${admin}</p>
 </body>
 
 </html>

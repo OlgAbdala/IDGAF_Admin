@@ -57,7 +57,7 @@
 
     <servlet>
         <servlet-name>SignatureDemandeServlet</servlet-name>
-        <servlet-class>sadministration.servlets.SignatureDemandeServlet</servlet-class>
+        <servlet-class>administration.servlets.SignatureDemandeServlet</servlet-class>
     </servlet>
 
     <servlet>

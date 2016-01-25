@@ -38,7 +38,7 @@
 
 </head>
 
-<body BACKGROUND="AdmBackground1.jpg" BGCOLOR="#000088" TEXT="#000088">
+<body BACKGROUND="img/AdmBackground1.jpg" BGCOLOR="#000088" TEXT="#000088">
 
     <div id="wrapper">
 
@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="afficheStageAdmin.jsp">Accueil</a>
+                <a class="navbar-brand" href="/WEB-INF/accueilAdmin.jsp">Accueil</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -64,7 +64,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Admin Profile</a></li>
                         <li class="divider"></li>
-                        <li><a href="accueilEtud.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/WEB-INF/adminLoginPage.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -79,9 +79,35 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                        <h1 class="page-header">Liste des étudiants sans convention de stage!</h1>
+                        <table class="table table-responsive table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>IdEtudiant</th>
+                                    <th>IdOffre</th>
+                                    <th>InfoConvention</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
 
-                        <a href="accueilAdmin.jsp" Liste des /> 4 étudiants en attente de signature de convention de stage!</a>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="request"  items="${requestsList}"  varStatus="status">
 
+                                <tr>
+                                    <td> ${request.studentID} </td>
+                                    <td> ${request.internshipID} </td>
+                                    <td><a href="La convention de stage" </a> Cliquez ici pour télécharger la  "${l3[status.index]}" </td>
+                                    <td>${request.status}</td>
+                              <td valign="bottom">
+                                  <input type="button" name="signatureDemande" value="signatureDemande" onclick="self.location.href='SignatureDemandeServlet?ID=${request.ID}'" style="background-color:#3cb371" style="color:white; font-weight:bold"onclick> 
+                                  <input type="button" name="propositionModification" value="propositionModification" onclick="self.location.href='PropositionModificationServlet'" style="background-color:#3cb371" style="color:white; font-weight:bold"onclick> 
+                              </td>
+                                </tr>
+                               </c:forEach>
+
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

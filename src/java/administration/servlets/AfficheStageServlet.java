@@ -5,6 +5,9 @@
 
 package administration.servlets;
 
+import administration.beans.Request;
+import administration.dao.DAOFactory;
+import administration.dao.RequestDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,37 +21,30 @@ import javax.servlet.http.HttpServletResponse;
  * @author ChaySi
  */
 public class AfficheStageServlet extends HttpServlet {
-
+ private static final String CONF_DAO="daofactory";
+	private RequestDao requestDao;
+	
+	public void init(){
+		this.requestDao=((DAOFactory)getServletContext().getAttribute(CONF_DAO)).getRequestDao();
+	}
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+       
+       
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-         List<String> l1 = new ArrayList();
-         l1.add("etudiant1");
-         l1.add("etudiant2");
-         l1.add("etudiant3");
-          request.setAttribute("l1",l1);
-           List<String> l2 = new ArrayList();
-         l2.add("offre1");
-         l2.add("offre2");
-         l2.add("offre3");
-          request.setAttribute("l2",l2);
-         List<String> l3 = new ArrayList();
-         l3.add("convention1");
-         l3.add("convention2");
-         l3.add("convention3");
-          request.setAttribute("l3",l3);
-          List<String> l4 = new ArrayList();
-         l4.add("validé");
-         l4.add("pas encore");
-         l4.add("à corriger");
-          request.setAttribute("l4",l4);
-          
-          request.getRequestDispatcher("portailAdmin.jsp").forward(request, response);
+        //void createRequest(Request request) throws DAOException;
+		Request req;
+
+		// List<Request> listRequests() throws DAOException;
+		ArrayList<Request> requestsList=(ArrayList<Request>) this.requestDao.listRequests();
+		request.setAttribute("requestsList", requestsList);
+		
+          request.getRequestDispatcher("/WEB-INF/afficheStageAdmin.jsp").forward(request, response);
 
     }
 

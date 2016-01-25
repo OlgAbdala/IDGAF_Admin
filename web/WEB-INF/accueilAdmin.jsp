@@ -1,7 +1,7 @@
 <%-- 
     Document   : accueilAdmin
     Created on : 19 janv. 2016, 11:18:15
-    Author     : star
+    Author     : ChaySi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

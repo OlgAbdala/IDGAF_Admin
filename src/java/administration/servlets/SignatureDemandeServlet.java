@@ -6,8 +6,12 @@
 
 package administration.servlets;
 
+import administration.beans.Request;
+import administration.dao.DAOFactory;
+import administration.dao.RequestDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +22,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author star
  */
 public class SignatureDemandeServlet extends HttpServlet {
-   
+   private static final String CONF_DAO="daofactory";
+	private RequestDao requestDao;
+	
+	public void init(){
+		this.requestDao=((DAOFactory)getServletContext().getAttribute(CONF_DAO)).getRequestDao();
+	}
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -57,7 +66,17 @@ public class SignatureDemandeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        if(request.getParameter("ID")!=null){
+            long ID=Long.valueOf(request.getParameter("ID"));
+          Request req=this.requestDao.retrieveRequestFromID(ID);
+          req.setStatus(Request.RequestStatus.ACCEPTED_BY_ADMINISTRATION);		
+            this.requestDao.updateRequestStatus(req);  
+        }
+           
+     
+           RequestDispatcher dispatcher=request.getRequestDispatcher("/AfficheStageServlet");
+        dispatcher.forward(request, response);
     } 
 
     /** 
