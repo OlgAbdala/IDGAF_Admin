@@ -73,12 +73,6 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>AccueilEtuServlet</servlet-name>
-        <url-pattern>/AccueilEtuServlet</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet-mapping>
         <servlet-name>AfficheStageServlet</servlet-name>
         <url-pattern>/AfficheStageServlet</url-pattern>
     </servlet-mapping>
