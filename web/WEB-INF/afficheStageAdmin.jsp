@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/WEB-INF/accueilAdmin.jsp">Accueil</a>
+                <a class="navbar-brand" href="./AccueilAdminServlet">Accueil</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -64,7 +64,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Admin Profile</a></li>
                         <li class="divider"></li>
-                        <li><a href="/WEB-INF/adminLoginPage.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="./ConnexionAdminServlet"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
